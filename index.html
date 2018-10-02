@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+	<title>National Parks Search App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<main class="container" role="main">
+			<h1>National Parks Search</h1>
+			<form id="js-form">
+				<label for="search-term">Enter One or More State Codes:</label>
+				<input type="text" name="search-term" class="js-search" required>
+
+				<label for="max-results">Max Results:</label>
+				<input type="text" name="max-results" class="js-max-results" placeholder="10">
+				<input type="submit" value="Search GitHub">
+			</form>
+			<p class="error-message"></p>
+			<section class="js-results hidden" id="results" role="region">
+				<h2>Search Results:</h2>
+				<ul class="js-results-list">
+				</ul>
+			</section>
+	</main>
+	<script src="main.js"></script>
+</body>	
