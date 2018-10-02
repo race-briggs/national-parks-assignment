@@ -13,12 +13,12 @@ function displayResults(responseJson, maxResults) {
 	console.log(responseJson);
 	$('.js-results-list').empty();
 
-	for (let i = 0; i < responseJson.length & i < maxResults; i++) {
+	for (let i = 0; i < responseJson.data.length & i < maxResults; i++) {
 		$('.js-results-list').append(
 			`<li class="result-li">
-				<h3>${responseJson[i].name}</h3>
-				<a href="${responseJson[i].url}">${responseJson[i].url}</a>
-				<p>${responseJson[i].description}</p>
+				<h3>${responseJson.data[i].name}</h3>
+				<a href="${responseJson.data[i].url}">${responseJson.data[i].url}</a>
+				<p>${responseJson.data[i].description}</p>
 			</li>`
 			);
 	};
@@ -28,11 +28,19 @@ function displayResults(responseJson, maxResults) {
 function getRequest(query, maxResults=10) {
 
 	const params = {
-		stateCode: query.replace(/\s/g,'');
+		stateCode: query.replace(/\s/g,''),
 		api_key: apiKey
 	};
 
 	const url = searchEndPoint + '?' + formatQuery(params);
+
+	const options = {
+		mode: 'cors',
+		method: 'GET',
+		headers: new Headers({
+			"Access-Control-Allow-Origin": true
+			})
+	};
 
 	fetch(url, options)
 		.then(response => {
