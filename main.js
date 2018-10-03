@@ -29,7 +29,8 @@ function getRequest(query, maxResults=10) {
 
 	const params = {
 		stateCode: query.replace(/\s/g,''),
-		api_key: apiKey
+		api_key: apiKey,
+		limit: maxResults
 	};
 
 	const url = searchEndPoint + '?' + formatQuery(params);
@@ -38,7 +39,7 @@ function getRequest(query, maxResults=10) {
 		mode: 'cors',
 		method: 'GET',
 		headers: new Headers({
-			"Access-Control-Allow-Origin": true
+      'accept': 'application/json',
 			})
 	};
 
